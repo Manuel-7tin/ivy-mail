@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <h2>ivy-mail</h2>
+    </nav>
+    <form action="" class="csv-form">
+        <input type="file" name="csvFile" id="csv-file-upload" accept=".csv">
+        <button type="submit" class="csv-file-btn">ok</button>
+    </form>
+    <div class="content">
+        <div class="options">
+            <div class="email op js-class-option " id="email">email</div>
+            <div class="sms op" id="sms">sms</div>
+            <div class="both op" id="both">both</div>
+        </div>
+        <div class="email-body body">
+            <div class="upload-csv"  id="upload-csv">
+                    <p id="upload-csv-p">upload csv file</p>
+                    <div class="upload-icon">
+                        <i class="fas fa-add"></i>
+                </div>
+            </div>
+            
+            <!-- CONTAINER -->
+            <div class="container">
+             <form class ="submit-form" >
+                <input type="text" placeholder="subject" class="subject-input">
+                <textarea name="compose-email" placeholder="body" id="compose-email-input" class="compose-email-input msg"></textarea>
+                <button type="submit" class="send-email-btn btn">send</button>
+             </form>
+            </div>
+            <!-- END OF CONTAINER -->
+           
+        </div>
+    
+        <div class="sms-body body">
+            <div class="upload-csv" id="upload-csv">
+                <p id="upload-csv-p">upload csv file</p>
+                <div class="upload-icon">
+                    <i class="fas fa-add"></i>
+            </div>
+            </div>
+            <!-- CONTAINER -->
+            <div class="container">
+                <form class ="submit-form">
+                    <textarea name="compose-message" placeholder="message" id="compose-sms-input" class="compose-sms-input msg"></textarea>
+             <button type="submit" class="send-sms-btn btn">send</button>
+                </form>
+            </div>
+            <!-- END OF CONTAINER -->
+    
+        </div>
+        
+        <div class="both-body body">
+            <div class="ucsv-container">
+            <div class="upload-csv ucsv1" id="upload-csv">
+                <p id="upload-csv-p">upload csv file</p>
+                <div class="upload-icon">
+                    <i class="fas fa-add"></i>
+            </div>
+            </div>
+            <div class="upload-csv ucsv2" id="upload-csv">
+                <p id="upload-csv-p">upload csv file</p>
+                    <div class="upload-icon">
+                        <i class="fas fa-add"></i>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <form class ="submit-form">
+            <input type="text" placeholder="subject" class="subject-input">
+             <textarea name="compose-message" placeholder="compose message" id="compose-both-input" class="compose-both-input msg"></textarea>
+            <button type="submit" class="send-both-btn btn">send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="icons">
+            <a href="" class="icon">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="" class="icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="icon">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="" class="icon">
+                <i class="fab fa-discord"></i>
+            </a>
+        </div>
+        <h4 class="footer-text">
+            &copy; <span>2024</span>
+            <span class="company">ivy league assoiates </span>
+            all rights reserved
+          </h4>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
