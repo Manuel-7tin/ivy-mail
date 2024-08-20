@@ -16,7 +16,7 @@ nav {
   background: var(--clr-primary);
   color: white;
   user-select: none;
-  padding: 0.7rem 1rem;
+  padding: 1.5rem 1rem;
   text-transform: capitalize;
 }
 .content {
@@ -157,6 +157,7 @@ p {
 }
 .btn {
   display: inline-block;
+  margin-bottom: 12rem;
   width: 30%;
   background: var(--clr-primary);
   border: none;
@@ -165,14 +166,16 @@ p {
   font-size: 1.2rem;
   padding: 0.7rem 1.2rem;
   cursor: pointer;
+
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-  position: absolute;
+  /* position: absolute;
   bottom: -3rem;
-  right: 3rem;
+  right: 3rem; */
+  float: right;
 }
 
 /*
@@ -217,7 +220,7 @@ footer {
   color: white;
   text-align: center;
   user-select: none;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   padding: 0.7rem 0;
