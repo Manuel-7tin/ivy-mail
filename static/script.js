@@ -13,6 +13,8 @@ const bothBody = document.querySelector(".both-body");
 const allbtn = document.querySelectorAll(".btn");
 const submitForm = document.querySelectorAll(".submit-form");
 const csvForm = document.querySelector(".csv-form");
+const csvBtn = document.querySelector("#csvBtn")
+console.log(submitForm);
 
 smsBody.classList.add("js-class1");
 bothBody.classList.add("js-class1");
@@ -75,11 +77,66 @@ uploadIcon.forEach(function (single, i) {
   });
 });
 
-submitForm.forEach(function (single, i) {
-  single.addEventListener("submit", function () {
-    csvForm.submit();
-  });
+// Select the forms and elements
+const csvForm = document.querySelector('.csv-form'); // The form for uploading the CSV
+const csvInputFile = document.querySelector('#csv-file-upload'); // The file input element
+const submitForms = document.querySelectorAll('.submit-form'); // The forms with the send buttons
+
+// Attach a submit event listener to each form with a send button
+// Select the elements and forms
+const csvForm = document.querySelector('.csv-form'); // The form for uploading the CSV
+const csvInputFile = document.querySelector('#csv-file-upload'); // The file input element
+const submitForms = document.querySelectorAll('.submit-form'); // The forms with the send buttons
+
+// Attach a submit event listener to each form with a send button
+submitForms.forEach(function (singleForm) {
+    singleForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Create a new FormData object to hold the combined data
+        const combinedData = new FormData();
+
+        // Append the CSV file if one is selected
+        if (csvInputFile.files.length > 0) {
+            combinedData.append('csvFile', csvInputFile.files[0]);
+        }
+
+        // Append data from the submit form
+        const formElements = singleForm.elements;
+        for (let i = 0; i < formElements.length; i++) {
+            const element = formElements[i];
+            if (element.name && element.type !== 'file') {
+                combinedData.append(element.name, element.value);
+            }
+        }
+
+        // Send the combined data as a POST request to the server via AJAX
+        fetch(singleForm.action, {
+            method: 'POST', // Use POST method
+            body: combinedData,
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            // Redirect or update the page based on the response
+            window.location.href = data.redirect_url || '/';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    });
 });
+
+
+//console.log("come on man")
+//submitForm.forEach(function (single, i) {
+//    console.log("come on man")
+//  single.addEventListener("submit", function (e) {
+//    e.preventDefault();
+//    csvBtn.click();
+////    csvForm.submit();
+//  });
+//});
 
 // allbtn.forEach(function(btn, i){
 //     btn.addEventListener('click', function(e){

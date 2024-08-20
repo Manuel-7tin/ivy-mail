@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css') }}">
 </head>
 <body>
     <nav>
         <h2>SendMail</h2>
     </nav>
-    <form action="{{ url_for('take_csv') }}" method="post" name="csv" class="csv-form">
+    <form action="{{ url_for('send_msg') }}" method="post" name="csv" class="csv-form">
         <input type="file" name="csvFile" id="csv-file-upload" accept=".csv">
-        <button type="submit" class="csv-file-btn">ok</button>
+        <button type="submit" class="csv-fil-btn" id="csvBtn">ok</button>
     </form>
     <div class="content">
         <div class="options">
@@ -21,7 +21,8 @@
             <div class="sms op" id="sms">sms</div>
             <div class="both op" id="both">both</div>
         </div>
-        <div class="email-body body">           <div class="upload-csv"  id="upload-csv">
+        <div class="email-body body">
+            <div class="upload-csv"  id="upload-csv">
                     <p id="upload-csv-p">upload csv file</p>
                     <div class="upload-icon">
                         <i class="fas fa-add"></i>

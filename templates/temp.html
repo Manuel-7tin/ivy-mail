@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Upload</title>
+</head>
+<body>
+    <h1>Upload CSV File</h1>
+    <form action="{{ url_for('temp') }}" method="post">
+    <input type="file" id="csvFileInput" accept=".csv" name="joko">
+    <button  name="ekolo">Upload</button>
+    </form>
+    <div id="output"></div>
+
+    <script>
+        function handleFileUpload() {
+            const fileInput = document.getElementById('csvFileInput');
+            const file = fileInput.files[0];
+            const output = document.getElementById('output');
+
+            if (file) {
+                if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        const contents = e.target.result;
+                        output.innerHTML = `File contents:<br><pre>${contents}</pre>`;
+                    };
+
+                    reader.onerror = function(e) {
+                        output.innerHTML = 'Error reading file';
+                    };
+
+                    reader.readAsText(file);
+                } else {
+                    output.innerHTML = 'Please upload a CSV file';
+                }
+            } else {
+                output.innerHTML = 'No file selected';
+            }
+        }
+    </script>
+</body>
+</html>

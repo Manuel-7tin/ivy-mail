@@ -12,6 +12,9 @@ def page():
 def send_msg():
     print("omo")
     print(request.method)
+    print("file:", request.files.keys())
+    print(request.form.keys())
+    print(request.form.get("csvFile"))
     if request.method == "POST":
         print("in")
         data = request.form
@@ -31,8 +34,17 @@ def send_text():
 def take_csv():
     print("shashasahs")
     if request.method == "POST":
-        print(type(request.form.get("csv")))
+        print(type(request.form.get("csvFile")))
+    # return redirect("www.google.com")
 
+@app.route("/test", methods=["GET", "POST"])
+def temp():
+    print("habibi")
+    print("file:", request.files.keys())
+    print(request.form.keys())
+    print(request.form.get("joko"))
+    print(request.form.get("ekolo"))
+    return render_template("temp.html")
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
