@@ -10,120 +10,157 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css') }}"
+      href="fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css"
     />
   </head>
   <body>
+    <!-- THE NAV -->
     <nav>
       <h2>SendMail</h2>
     </nav>
+    <!-- END OF THE NAV -->
+
+    <!-- THE FORM FOR CSV SELECT FILE -->
     <form
-      action="{{ url_for('send_msg') }}"
+      action="{{ url_for('take_csv') }}"
       method="post"
       name="csv"
       class="csv-form"
     >
       <input type="file" name="csvFile" id="csv-file-upload" accept=".csv" />
-      <button type="submit" class="csv-file-btn" id="csvBtn">ok</button>
+      <button type="submit" class="csv-file-btn">ok</button>
     </form>
+    <!-- THE END OF FORM FOR CSV SELECT FILE -->
+
+    <!--  THE PAGE CONTENT -->
     <div class="content">
+      <!-- Options containing navigation to email, sms, both -->
       <div class="options">
+        <!-- email option -->
         <div class="email op js-class-option" id="email">email</div>
+        <!-- Sms option -->
         <div class="sms op" id="sms">sms</div>
+        <!-- Both option -->
         <div class="both op" id="both">both</div>
       </div>
+      <!-- End of the options... -->
+
+      <!-- ENTER EMAIL BODY PAGE OF THE WEBSITE-->
       <div class="email-body body">
-        <div class="upload-csv" id="upload-csv">
-          <p id="upload-csv-p">upload csv file</p>
+        <!-- Upload csv file for EMAIL -->
+        <div class="upload-csv">
+          <p>upload csv file</p>
           <div class="upload-icon">
             <i class="fas fa-add"></i>
           </div>
         </div>
+        <!-- end Upload csv file for EMAIL -->
 
         <!-- CONTAINER -->
         <div class="container">
+          <!-- form containing all the inputs on EMAIL page -->
           <form
             class="submit-form"
             method="post"
             action="{{ url_for('send_msg') }}"
           >
+            <!-- input field for subject -->
             <input
               type="text"
               placeholder="subject"
               class="subject-input"
               name="subject"
             />
+            <!-- textarea field for body of the message -->
             <textarea
               name="message_body"
               placeholder="body"
               id="compose-email-input"
               class="compose-email-input msg"
             ></textarea>
+            <!-- button to submit the content of the page -->
             <button type="submit" class="send-email-btn btn">send</button>
           </form>
+          <!-- end of form containing all the inputs on EMAIL page -->
         </div>
         <!-- END OF CONTAINER -->
       </div>
+      <!-- end of email body -->
 
+      <!-- ENTIRE SMS BODY PAGE OF THE WEBSITE -->
       <div class="sms-body body">
-        <div class="upload-csv" id="upload-csv">
-          <p id="upload-csv-p">upload csv file</p>
+        <!-- Upload csv file for SMS -->
+        <div class="upload-csv">
+          <p>upload csv file</p>
           <div class="upload-icon">
             <i class="fas fa-add"></i>
           </div>
         </div>
+        <!-- end of Upload csv file for SMS -->
+
         <!-- CONTAINER -->
         <div class="container">
+          <!-- form containing all the inputs on SMS page -->
           <form
             class="submit-form"
             method="post"
             action="{{ url_for('send_text') }}"
           >
+            <!-- textarea field for body of the message SMS -->
             <textarea
               name="message_body"
               placeholder="message"
               id="compose-sms-input"
               class="compose-sms-input msg"
             ></textarea>
+            <!-- button to submit the content of the page SMS-->
             <button type="submit" class="send-sms-btn btn">send</button>
           </form>
+          <!-- form containing all the inputs on SMS page -->
         </div>
         <!-- END OF CONTAINER -->
       </div>
+      <!-- end of SMS body -->
 
+      <!-- enter EMAIL BODY page of the website -->
       <div class="both-body body">
+        <!-- Upload csv file for BOTH -->
         <div class="ucsv-container">
-          <div class="upload-csv ucsv1" id="upload-csv">
-            <p id="upload-csv-p">upload csv file</p>
+          <div class="upload-csv ucsv1">
+            <p>upload csv file</p>
             <div class="upload-icon">
               <i class="fas fa-add"></i>
             </div>
           </div>
           <div class="upload-csv ucsv2" id="upload-csv">
-            <p id="upload-csv-p">upload csv file</p>
+            <p>upload csv file</p>
             <div class="upload-icon">
               <i class="fas fa-add"></i>
             </div>
           </div>
         </div>
+        <!-- end of Upload csv file for BOTH -->
         <div class="container">
           <form
             class="submit-form"
             method="post"
             action="{{ url_for('send_msg') }}"
           >
+            <!-- input field for subject BOTH -->
             <input
               type="text"
               placeholder="Mail Subject"
               class="subject-input"
               name="subject"
             />
+            <!-- textarea field for body of the message BOTH -->
             <textarea
               name="message_body"
               placeholder="compose message"
               id="compose-both-input"
               class="compose-both-input msg"
             ></textarea>
+            <!-- button to submit the content of the page BOTH-->
             <button type="submit" class="send-both-btn btn">send</button>
           </form>
         </div>
@@ -132,29 +169,17 @@
 
     <footer>
       <div class="icons">
-        <a
-          href="https://www.facebook.com/ivy.leagueacca?mibextid=ZbWKwL"
-          target="_blank"
-          class="icon"
-        >
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a
-          href="https://www.instagram.com/ivyleagueassociates?igsh=MWRyOTJ1bXV0NTk5MQ=="
-          target="_blank"
-          class="icon"
-        >
-          <i class="fab fa-instagram"></i>
-        </a>
         <a href="" class="icon">
           <i class="fab fa-x-twitter"></i>
         </a>
-        <a
-          href="https://www.linkedin.com/in/ivy-league-associates-536aa1145?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-          target="_blank"
-          class="icon"
-        >
+        <a href="" class="icon">
           <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="" class="icon">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="" class="icon">
+          <i class="fab fa-discord"></i>
         </a>
       </div>
       <h4 class="footer-text">

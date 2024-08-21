@@ -77,6 +77,17 @@ uploadIcon.forEach(function (single, i) {
   });
 });
 
+// Select the forms and elements
+const csvForm = document.querySelector(".csv-form"); // The form for uploading the CSV
+const csvInputFile = document.querySelector("#csv-file-upload"); // The file input element
+const submitForms = document.querySelectorAll(".submit-form"); // The forms with the send buttons
+
+// Attach a submit event listener to each form with a send button
+// Select the elements and forms
+const csvForm = document.querySelector(".csv-form"); // The form for uploading the CSV
+const csvInputFile = document.querySelector("#csv-file-upload"); // The file input element
+const submitForms = document.querySelectorAll(".submit-form"); // The forms with the send buttons
+
 // Attach a submit event listener to each form with a send button
 submitForms.forEach(function (singleForm) {
   singleForm.addEventListener("submit", function (e) {
