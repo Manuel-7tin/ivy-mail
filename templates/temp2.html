@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload and Message Form</title>
+    <title>Message Form with Quill Editor</title>
     <!-- Include Quill stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        <style>
+      /* Ensure the editor has a visible height and padding */
+      #editor {
+        height: 300px;
+        background-color: white; /* Ensure background is set */
+        padding: 10px;
+      }
+        </style>
 </head>
 <body>
-    <h2>Upload CSV and Submit Message</h2>
+    <h2>Write Your Message</h2>
 
     <!-- Form 1: CSV Upload -->
     <form id="csvForm" enctype="multipart/form-data">
@@ -16,12 +24,17 @@
         <input type="submit" id="csvSubmit" style="display:none;">
     </form>
 
-    <!-- Form 2: Message -->
+    <!-- Form 2: Message with Quill Editor -->
     <form id="messageForm">
-        <input type="text" id="message" name="message" placeholder="Enter your message" required>
+        <!-- Create the editor container -->
+        <div id="editor"></div>
         <button type="submit">Submit Both</button>
     </form>
 
+    <!-- Include Quill library -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- Initialize Quill editor -->
     <script>
         var quill = new Quill('#editor', {
             theme: 'snow'
@@ -35,15 +48,18 @@
 
             // Create a FormData object to combine both forms' data
             var formData = new FormData(document.getElementById('csvForm'));
-            formData.append('message', document.getElementById('message').value);
+            formData.append('message', message);
 
             // Submit the combined form data via POST
-            fetch('/submit', {
+            fetch('/test', {
                 method: 'POST',
                 body: formData
             }).then(response => {
-                // Redirect to Google after successful submission
-                window.location.href = 'https://www.google.com';
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    return response.json();  // For error handling or other responses
+                }
             }).catch(error => {
                 console.error('Error:', error);
             });

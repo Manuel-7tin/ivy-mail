@@ -12,8 +12,8 @@ app = Flask(__name__)
 
 def send_email(data, msg):
     print(msg, data)
-    mail_sender = os. getenv("MAIL")
-    PASSWORD = os. getenv("PWORD")
+    # mail_sender = os.getenv("MAIL")
+    # PASSWORD = os.getenv("PWORD")
     date = dt.datetime.now()
     f_date = date.strftime("%H:%M | %b %d, %Y.")
     msg_subject = msg[0]
@@ -31,7 +31,7 @@ def send_email(data, msg):
         message["To"] = person["email"]
         message["Subject"] = msg_subject
         # message.set_content(personalized_letter)
-        message.add_alternative(personalized_letter) #, subtype='html')
+        message.add_alternative(personalized_letter, subtype='html')
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(host="smtp.gmail.com", port=465, context=context) as mail:
@@ -86,12 +86,22 @@ def take_csv():
 
 @app.route("/test", methods=["GET", "POST"])
 def temp():
-    print("habibi")
-    print("file:", request.files.keys())
-    print(request.form.keys())
-    print(request.form.get("joko"))
-    print(request.form.get("ekolo"))
-    return render_template("temp.html")
+    if request.method == "POST":
+        # Get the uploaded CSV file
+        csv_file = request.files['csvFile']
+        if csv_file:
+            # Process the file as needed
+            pass
+
+        # Get the message content as HTML
+        message_html = request.form.get('message')
+        if message_html:
+            print("Message as HTML:", message_html)
+            # You can store this HTML, render it, or process it further
+
+        # Redirect immediately
+        return redirect("https://www.twitter.com")
+    return render_template("temp2.html")
 
 
 @app.route('/submit', methods=['POST', 'GET'])

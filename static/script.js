@@ -78,13 +78,21 @@ uploadIcon.forEach(function (single, i) {
 });
 
 // VERY IMPORTANT!!
+var quill = new Quill('#editor', {
+    theme: 'snow'
+});
+
 document.getElementById('messageForm').addEventListener('submit', function(event) {
     event.preventDefault();
+
+    // Get HTML content from Quill editor
+    var message = quill.root.innerHTML;
 
     // Create a FormData object to combine both forms' data
     var formData = new FormData(document.getElementById('csvForm'));
     formData.append('subject', document.getElementById('email-subject').value);
-    formData.append('body', document.getElementById('compose-email-input').value);
+    formData.append('body', message);
+//    formData.append('body', document.getElementById('compose-email-input').value);
 
     // Submit the combined form data via POST
     fetch('/mail', {
