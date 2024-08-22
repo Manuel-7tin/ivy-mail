@@ -3,43 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV File Upload</title>
+    <title>File Upload and Message Form</title>
 </head>
 <body>
-    <h1>Upload CSV File</h1>
-    <form action="{{ url_for('temp') }}" method="post">
-    <input type="file" id="csvFileInput" accept=".csv" name="joko">
-    <button  name="ekolo">Upload</button>
+    <h2>Upload CSV and Submit Message</h2>
+
+    <!-- Form 1: CSV Upload -->
+    <form id="csvForm" enctype="multipart/form-data">
+        <input type="file" id="csvFile" name="csvFile" accept=".csv" required>
+        <input type="submit" id="csvSubmit" style="display:none;">
     </form>
-    <div id="output"></div>
+
+    <!-- Form 2: Message -->
+    <form id="messageForm">
+        <input type="text" id="message" name="message" placeholder="Enter your message" required>
+        <button type="submit">Submit Both</button>
+    </form>
 
     <script>
-        function handleFileUpload() {
-            const fileInput = document.getElementById('csvFileInput');
-            const file = fileInput.files[0];
-            const output = document.getElementById('output');
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-            if (file) {
-                if (file.type === 'text/csv' || file.name.endsWith('.csv')) {
-                    const reader = new FileReader();
+            // Create a FormData object to combine both forms' data
+            var formData = new FormData(document.getElementById('csvForm'));
+            formData.append('message', document.getElementById('message').value);
 
-                    reader.onload = function(e) {
-                        const contents = e.target.result;
-                        output.innerHTML = `File contents:<br><pre>${contents}</pre>`;
-                    };
-
-                    reader.onerror = function(e) {
-                        output.innerHTML = 'Error reading file';
-                    };
-
-                    reader.readAsText(file);
-                } else {
-                    output.innerHTML = 'Please upload a CSV file';
-                }
-            } else {
-                output.innerHTML = 'No file selected';
-            }
-        }
+            // Submit the combined form data via POST
+            fetch('/submit', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                // Redirect to Google after successful submission
+                window.location.href = 'https://www.google.com';
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
     </script>
 </body>
 </html>

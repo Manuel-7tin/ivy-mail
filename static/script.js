@@ -77,44 +77,32 @@ uploadIcon.forEach(function (single, i) {
   });
 });
 
-// Attach a submit event listener to each form with a send button
-submitForms.forEach(function (singleForm) {
-  singleForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent the default form submission
+// VERY IMPORTANT!!
+document.getElementById('messageForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    // Create a new FormData object to hold the combined data
-    const combinedData = new FormData();
+    // Create a FormData object to combine both forms' data
+    var formData = new FormData(document.getElementById('csvForm'));
+    formData.append('subject', document.getElementById('email-subject').value);
+    formData.append('body', document.getElementById('compose-email-input').value);
 
-    // Append the CSV file if one is selected
-    if (csvInputFile.files.length > 0) {
-      combinedData.append("csvFile", csvInputFile.files[0]);
-    }
-
-    // Append data from the submit form
-    const formElements = singleForm.elements;
-    for (let i = 0; i < formElements.length; i++) {
-      const element = formElements[i];
-      if (element.name && element.type !== "file") {
-        combinedData.append(element.name, element.value);
-      }
-    }
-
-    // Send the combined data as a POST request to the server via AJAX
-    fetch(singleForm.action, {
-      method: "POST", // Use POST method
-      body: combinedData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        // Redirect or update the page based on the response
-        window.location.href = data.redirect_url || "/";
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  });
+    // Submit the combined form data via POST
+    fetch('/mail', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        if (response.redirected) {
+            // Redirect manually using the URL from the response
+            window.location.href = response.url;
+        } else {
+            return response.json();  // For error handling or any other response
+        }
+        }).catch(error => {
+        console.error('Error:', error);
+    });
 });
+// IMPORTANCE ENDS!!!
+
 
 //console.log("come on man")
 //submitForm.forEach(function (single, i) {

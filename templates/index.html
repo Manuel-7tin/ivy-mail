@@ -21,6 +21,7 @@
       action="{{ url_for('send_msg') }}"
       method="post"
       name="csv"
+      id="csvForm"
       class="csv-form"
     >
       <input type="file" name="csvFile" id="csv-file-upload" accept=".csv" />
@@ -45,11 +46,13 @@
           <form
             class="submit-form"
             method="post"
+            id="messageForm"
             action="{{ url_for('send_msg') }}"
           >
             <input
               type="text"
               placeholder="subject"
+              id="email-subject"
               class="subject-input"
               name="subject"
             />
