@@ -10,11 +10,13 @@ const body = document.querySelectorAll(".body");
 const emailBody = document.querySelector(".email-body");
 const smsBody = document.querySelector(".sms-body");
 const bothBody = document.querySelector(".both-body");
+const textAreas = document.querySelectorAll(".msgs");
 const allbtn = document.querySelectorAll(".btn");
 const submitForm = document.querySelectorAll(".submit-form");
 const csvForm = document.querySelector(".csv-form");
 const csvBtn = document.querySelector("#csvBtn");
 console.log(submitForm);
+console.log(textAreas);
 
 smsBody.classList.add("js-class1");
 bothBody.classList.add("js-class1");
@@ -77,41 +79,83 @@ uploadIcon.forEach(function (single, i) {
   });
 });
 
-// VERY IMPORTANT!!
-var quill = new Quill('#editor', {
-    theme: 'snow'
+textAreas.forEach(function (single) {
+  // single.style.color = "red";
+  single.addEventListener("input", () => {
+    const text = single.value;
+    console.log(text);
+
+    const sentences = text.split(". ");
+    let i = 0;
+    while (i < sentences.length) {
+      sentences[i] =
+        sentences[i].charAt(0).toUpperCase() + sentences[i].slice(1);
+      console.log(sentences[i]);
+      i++;
+    }
+    single.value = text.charAt(0).toUpperCase() + text.slice(1);
+    console.log(sentences, text);
+    single.value = sentences.join(". ");
+  });
 });
 
-document.getElementById('messageForm').addEventListener('submit', function(event) {
+// VERY IMPORTANT!!
+var quill = new Quill("#editor", {
+  theme: "snow",
+});
+
+document
+  .getElementById("messageForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Get HTML content from Quill editor
     var message = quill.root.innerHTML;
 
     // Create a FormData object to combine both forms' data
-    var formData = new FormData(document.getElementById('csvForm'));
-    formData.append('subject', document.getElementById('email-subject').value);
-    formData.append('body', message);
-//    formData.append('body', document.getElementById('compose-email-input').value);
+    var formData = new FormData(document.getElementById("csvForm"));
+    formData.append("subject", document.getElementById("email-subject").value);
+    formData.append("body", message);
+    //    formData.append('body', document.getElementById('compose-email-input').value);
 
     // Submit the combined form data via POST
-    fetch('/mail', {
-        method: 'POST',
-        body: formData
-    }).then(response => {
+    fetch("/mail", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
         if (response.redirected) {
-            // Redirect manually using the URL from the response
-            window.location.href = response.url;
+          // Redirect manually using the URL from the response
+          window.location.href = response.url;
         } else {
-            return response.json();  // For error handling or any other response
+          return response.json(); // For error handling or any other response
         }
-        }).catch(error => {
-        console.error('Error:', error);
-    });
-});
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
 // IMPORTANCE ENDS!!!
+// document.querySelector("#editor").style.color = "red";
+textAreas.forEach(function (single) {
+  // single.style.color = "red";
+  single.addEventListener("input", () => {
+    const text = single.value;
+    console.log(text);
 
-
+    const sentences = text.split(". ");
+    let i = 0;
+    while (i < sentences.length) {
+      sentences[i] =
+        sentences[i].charAt(0).toUpperCase() + sentences[i].slice(1);
+      console.log(sentences[i]);
+      i++;
+    }
+    single.value = text.charAt(0).toUpperCase() + text.slice(1);
+    console.log(sentences, text);
+    single.value = sentences.join(". ");
+  });
+});
 //console.log("come on man")
 //submitForm.forEach(function (single, i) {
 //    console.log("come on man")

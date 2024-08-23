@@ -13,15 +13,18 @@
       href="{{ url_for('static', filename='fontawesome-free-6.5.2-web (4)/fontawesome-free-6.5.2-web/css/all.min.css') }}"
     />
     <!-- Include Quill stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-        <style>
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <style>
       /* Ensure the editor has a visible height and padding */
       #editor {
         height: 300px;
         background-color: white; /* Ensure background is set */
         padding: 10px;
       }
-      </style>
+    </style>
   </head>
   <body>
     <nav>
@@ -66,13 +69,13 @@
               class="subject-input"
               name="subject"
             />
-            <div id="editor"></div>
-<!--            <textarea-->
-<!--              name="message_body"-->
-<!--              placeholder="body"-->
-<!--              id="compose-email-input"-->
-<!--              class="compose-email-input msg"-->
-<!--            ></textarea>-->
+            <div id="editor" class="msgs emsg"></div>
+            <!--            <textarea-->
+            <!--              name="message_body"-->
+            <!--              placeholder="body"-->
+            <!--              id="compose-email-input"-->
+            <!--              class="compose-email-input msg"-->
+            <!--            ></textarea>-->
             <button type="submit" class="send-email-btn btn">send</button>
           </form>
         </div>
@@ -97,7 +100,7 @@
               name="message_body"
               placeholder="message"
               id="compose-sms-input"
-              class="compose-sms-input msg"
+              class="compose-sms-input msgs msg"
             ></textarea>
             <button type="submit" class="send-sms-btn btn">send</button>
           </form>
@@ -136,7 +139,7 @@
               name="message_body"
               placeholder="compose message"
               id="compose-both-input"
-              class="compose-both-input msg"
+              class="compose-both-input msgs msg"
             ></textarea>
             <button type="submit" class="send-both-btn btn">send</button>
           </form>
