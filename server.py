@@ -1,5 +1,5 @@
 from flask import Flask, abort, render_template, redirect, url_for, flash, request
-# import pandas as pd
+import pandas as pd
 import datetime as dt
 import ssl
 import smtplib

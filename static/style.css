@@ -25,7 +25,7 @@ nav {
   max-width: 600px;
 }
 p {
-  text-transform: capitalize;
+  text-transform: none;
   color: white;
 }
 
@@ -108,6 +108,7 @@ p {
 #upload-csv-p {
   width: 85%;
 }
+
 .upload-icon {
   background: var(--clr-primary);
   width: 15%;
