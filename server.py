@@ -12,8 +12,8 @@ app = Flask(__name__)
 
 def send_email(data, msg):
     print(msg, data)
-    # mail_sender = os.getenv("MAIL")
-    # PASSWORD = os.getenv("PWORD")
+    mail_sender = os.getenv("MAIL_ADDR")
+    PASSWORD = os.getenv("PWORD")
     date = dt.datetime.now()
     f_date = date.strftime("%H:%M | %b %d, %Y.")
     msg_subject = msg[0]
