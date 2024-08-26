@@ -48,7 +48,7 @@
       </div>
       <div class="email-body body">
         <div class="upload-csv" id="upload-csv">
-          <p id="upload-csv-p">upload csv file</p>
+          <p class="upload-csv-p">upload csv file</p>
           <div class="upload-icon">
             <i class="fas fa-add"></i>
           </div>
@@ -69,6 +69,7 @@
               class="subject-input"
               name="subject"
             />
+            <!-- <div id="editor" class="compose-email-input msg msgs emsg" style="margin: 0 auto;"></div> -->
             <div id="editor" class="msgs emsg"></div>
             <!--            <textarea-->
             <!--              name="message_body"-->
@@ -84,7 +85,7 @@
 
       <div class="sms-body body">
         <div class="upload-csv" id="upload-csv">
-          <p id="upload-csv-p">upload csv file</p>
+          <p class="upload-csv-p">upload csv file</p>
           <div class="upload-icon">
             <i class="fas fa-add"></i>
           </div>
@@ -111,13 +112,13 @@
       <div class="both-body body">
         <div class="ucsv-container">
           <div class="upload-csv ucsv1" id="upload-csv">
-            <p id="upload-csv-p">upload csv file</p>
+            <p class="upload-csv-p">upload csv file</p>
             <div class="upload-icon">
               <i class="fas fa-add"></i>
             </div>
           </div>
           <div class="upload-csv ucsv2" id="upload-csv">
-            <p id="upload-csv-p">upload csv file</p>
+            <p class="upload-csv-p">upload csv file</p>
             <div class="upload-icon">
               <i class="fas fa-add"></i>
             </div>
@@ -181,7 +182,7 @@
       </h4>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
-<!--    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>-->
+    <!--    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>-->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

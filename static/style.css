@@ -20,9 +20,11 @@ nav {
   text-transform: capitalize;
 }
 .content {
+  height: 120vh;
   margin: 0 auto;
   padding-top: 1.1rem;
   max-width: 600px;
+  background: var(--clr-background);
 }
 p {
   text-transform: none;
@@ -105,8 +107,9 @@ p {
 .upload-csv p {
   padding: 0.7rem 1rem;
 }
-#upload-csv-p {
+.upload-csv-p {
   width: 85%;
+  /* color: red; */
 }
 
 .upload-icon {
@@ -140,6 +143,7 @@ p {
 
 .compose-email-input,
 .msg {
+  /* overflow: scroll; */
   width: 85%;
   height: 30vh;
   font-size: 1.3em;
@@ -276,6 +280,20 @@ JAVASCRIPT CLASSES
   display: grid;
   grid-template-columns: 0.5fr 1fr;
   gap: 2rem;
+}
+.ql-toolbar.ql-snow {
+  color: black !important;
+  border: 1px solid red;
+}
+.overlay {
+  opacity: 0.3;
+}
+.alert {
+  color: red;
+  border: 1px solid red;
+}
+.alert-p {
+  color: red;
 }
 
 /*
