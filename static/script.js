@@ -87,19 +87,27 @@ uploadIcon.forEach(function (single, i) {
 const picMap = new Map([
   [
     1,
-    "https://media.istockphoto.com/id/1433006462/photo/cyclist-riding-bike-in-city-setting.webp?b=1&s=612x612&w=0&k=20&c=VGvQuZkivB3AVlv0BFwbHEFNOJzt-5OlKya688DwExQ=",
+    "../static/images/image-1.jpg",
   ],
   [
     2,
-    "https://media.istockphoto.com/id/2147629945/photo/panoramic-view-of-buda-side-and-calvinist-church-of-budapest-hungary.webp?b=1&s=612x612&w=0&k=20&c=lFSD0T_M14JTXzqOsRed1osNAoJhGbalW14iWgZKsvE=",
+    "../static/images/image-2.jpg",
   ],
   [
     3,
-    "https://media.istockphoto.com/id/1987947526/photo/aerial-view-on-amazing-beach.webp?b=1&s=612x612&w=0&k=20&c=JB7QWFrvWbWDz-Hk8XPlTUkYK35Tk3SfMpROsjcu2L8=",
+    "../static/images/image-3.jpg",
   ],
   [
     4,
-    "https://media.istockphoto.com/id/1967543722/photo/the-city-of-london-skyline-at-night-united-kingdom.webp?b=1&s=612x612&w=0&k=20&c=wyehqF-1Eed9IXcS0PCmSGI1Pk8nrCyO4mlEcLyNStA=",
+    "../static/images/image-4.jpg",
+  ],
+  [
+    5,
+    "../static/images/image-5.jpg",
+  ],
+  [
+    6,
+    "../static/images/image-6.jpg",
   ],
 ]);
 const backGroundFunc = function () {
