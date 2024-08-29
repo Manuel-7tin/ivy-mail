@@ -1,4 +1,6 @@
 "use strict";
+const infoIcon = document.querySelector(".fa-circle-info");
+const infoPara = document.querySelector(".info_para");
 const options = document.querySelector(".options");
 const emailOption = document.querySelector("#email");
 const smsOption = document.querySelector("#sms");
@@ -28,7 +30,17 @@ smsBody.classList.add("js-class1");
 bothBody.classList.add("js-class1");
 
 const screenWidth = window.innerWidth;
-console.log(screenWidth);
+
+infoPara.classList.add("js-class1");
+console.log(infoIcon);
+infoIcon.addEventListener("mouseover", function (e) {
+  e.preventDefault;
+  infoPara.classList.toggle("js-class1");
+});
+infoPara.addEventListener("mouseleave", function (e) {
+  e.preventDefault;
+  infoPara.classList.toggle("js-class1");
+});
 
 console.log(uploadIcon);
 emailOption.addEventListener("click", function () {
@@ -85,30 +97,12 @@ uploadIcon.forEach(function (single, i) {
 });
 
 const picMap = new Map([
-  [
-    1,
-    "../static/images/image-1.jpg",
-  ],
-  [
-    2,
-    "../static/images/image-2.jpg",
-  ],
-  [
-    3,
-    "../static/images/image-3.jpg",
-  ],
-  [
-    4,
-    "../static/images/image-4.jpg",
-  ],
-  [
-    5,
-    "../static/images/image-5.jpg",
-  ],
-  [
-    6,
-    "../static/images/image-6.jpg",
-  ],
+  [1, "../static/images/image-1.jpg"],
+  [2, "../static/images/image-2.jpg"],
+  [3, "../static/images/image-3.jpg"],
+  [4, "../static/images/image-4.jpg"],
+  [5, "../static/images/image-5.jpg"],
+  [6, "../static/images/image-6.jpg"],
 ]);
 const backGroundFunc = function () {
   const random = Math.floor(Math.random() * 4 + 1);
@@ -178,9 +172,7 @@ document
       });
   });
 // IMPORTANCE ENDS!!!
-// document.querySelector("#editor").style.color = "red";
 textAreas.forEach(function (single) {
-  // single.style.color = "red";
   single.addEventListener("input", () => {
     const text = single.value;
     console.log(text);
