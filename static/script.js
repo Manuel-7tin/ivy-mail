@@ -116,9 +116,27 @@ setInterval(backGroundFunc(), 3000);
 // backGroundFunc();
 
 // VERY IMPORTANT!!
-var quill = new Quill("#editor", {
-  theme: "snow",
-});
+const opns = {
+  debug: 'info',
+  modules: {
+    toolbar: [
+//        [{ 'font': [] }, { 'size': [] }],
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'strike', 'link'],
+        [{ 'script': 'super' }, { 'color': [] }, { 'background': [] }, 'blockquote',],
+        [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }, { 'align': [] }],
+        ['image'], //, 'video', 'formula'],
+        ['clean']
+        ]
+  },
+  placeholder: 'Compose an epic email body...',
+  theme: 'snow'
+};
+const quill = new Quill('#editor', opns);
+//var quill = new Quill("#editor", {
+//  theme: "snow",
+//
+//});
 
 document
   .getElementById("messageForm")
@@ -147,6 +165,12 @@ document
 
     // Get HTML content from Quill editor
     var message = quill.root.innerHTML;
+    // Replace only <ol> tags that have data-list="bullet" with <ul>
+    message = message.replace(/<ol[^>]*data-list="bullet"[^>]*>/g, '<ul data-list="bullet">');
+
+    // Now, replace only the corresponding closing tags for bullet lists </ol> to </ul>
+    message = message.replace(/<\/ol>\s*(?=<li[^>]*data-list="bullet")/g, '</ul>');
+
 
     // Create a FormData object to combine both forms' data
     var formData = new FormData(document.getElementById("csvForm"));
